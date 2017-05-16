@@ -1,6 +1,7 @@
 'use strict';
 
 let globalWaitsTimer = null;
+let globalCounter = 0;
 
 let Content = (function() {
     let _status = JSON.parse(localStorage._status || "{}"),
@@ -56,7 +57,8 @@ let Content = (function() {
 
         let nextUrl = getNextUrl();
 
-        if (nextUrl && $records.length < itemsPerPage) {
+        if ($records.length < itemsPerPage && (globalCounter < 10) || nextUrl) {
+            globalCounter++;
             return false;
         } else {
             window.clearInterval(globalWaitsTimer);
