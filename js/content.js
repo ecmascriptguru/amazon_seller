@@ -24,13 +24,7 @@ let Content = (function() {
             orders.push(tempOrder);
         }
 
-        let $paginations = $(".myo_list_orders_link");
-        let $next = $paginations.eq($paginations.length - 1);
-        let nextUrl = null;
-
-        if ($next.text().toLowerCase() == "next") {
-            nextUrl = $next[0].href;
-        }
+        let nextUrl = getNextUrl();
 
         chrome.runtime.sendMessage({
             from: "content",
@@ -44,8 +38,15 @@ let Content = (function() {
         });
     };
 
-    let goToNext = () => {
-        
+    let getNextUrl = () => {
+        let $paginations = $(".myo_list_orders_link");
+        let $next = $paginations.eq($paginations.length - 1);
+        let nextUrl = null;
+
+        if ($next.text().toLowerCase() == "next") {
+            nextUrl = $next[0].href;
+        }
+        return nextUrl;
     }
 
     let parseOrders = () => {
@@ -53,7 +54,9 @@ let Content = (function() {
             orders = [],
             itemsPerPage = parseInt($("select[name='itemsPerPage']").val());
 
-        if ($records.length < itemsPerPage) {
+        let nextUrl = getNextUrl();
+
+        if (nextUrl && $records.length < itemsPerPage) {
             return false;
         } else {
             window.clearInterval(globalWaitsTimer);
