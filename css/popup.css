@@ -1,2 +1,5 @@
 .wrapper {
     min-width: 352px;}
+    span.alert {
+        padding: 2px 5px;
+        border-radius: 5px;}
