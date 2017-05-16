@@ -31,6 +31,12 @@ let Popup = (function() {
 	}
 
 	let stop = () => {
+		chrome.runtime.sendMessage({
+			from: "popup",
+			action: "stop"
+		}, (response) => {
+			console.log(response);
+		});
 		showStartPanel();
 	}
 

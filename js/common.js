@@ -51,7 +51,7 @@ let AmazonOrders = (function() {
     }
 
     let downloadPlaintext = (data, filename) => {
-        let blob = new Blob([data], { type: "text/plain" })
+        let blob = new Blob([data], { type: "text/plain" });
 
         let el = document.createElement("a")
         el.href = URL.createObjectURL(blob)
@@ -61,17 +61,15 @@ let AmazonOrders = (function() {
         document.body.removeChild(el)
     };
 
-    let exportToCSV = (leads) => {
+    let exportToCSV = (orders) => {
         let toLine = arr => arr.map(x => `"${(x + "").replace(/"/g, '""')}"`).join(",");
         let content = [toLine(["#", "Customer ID", "Order ID"])];
-        let status = JSON.parse(localStorage._status || "{}")
-        let prefix = JSON.parse(localStorage._prefix || "null") || (status.location + "_" + status.state);
-        prefix = templateToFileName(prefix);
+        let prefix = "amazon_orders_";
         let exportedCount = JSON.parse(localStorage._exportedCount || "0") + 1;
         localStorage._exportedCount = JSON.stringify(exportedCount);
 
-        for (let i = 0; i < leads.length; i ++) {
-            content.push(toLine([leads[i].name, leads[i].email]));
+        for (let i = 0; i < orders.length; i ++) {
+            content.push(toLine([(i + 1), orders[i].customer, orders[i].order]));
         }
         
         if (content.length > 1) {

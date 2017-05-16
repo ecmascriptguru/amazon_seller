@@ -8,7 +8,7 @@
 	"version": "1.0.2",
 	
 	"permissions": [
-		"https://sellercentral.amazon.com/gp/orders-v2/list/*",
+		"https://sellercentral.amazon.com/gp/orders-v2/*",
 		"storage",
 		"tabs"
 	],
@@ -27,7 +27,7 @@
 				"js/content.js"
 			],
 			"matches": [
-				"https://sellercentral.amazon.com/gp/orders-v2/list/*"
+				"https://sellercentral.amazon.com/gp/orders-v2/*"
 			],
 			"run_at": "document_end"
 		}

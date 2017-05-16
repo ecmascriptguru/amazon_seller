@@ -22,9 +22,11 @@ let Background = (function() {
 						});
 					} else if (request.action == "orders") {
 						AmazonOrders.save(request.data);
-						sendResponse({
-							started: JSON.parse(localStorage._started || "false")
-						});
+						if (request.next) {
+							chrome.tabs.update(sender.tab.id, {url: request.next});
+						} else {
+							AmazonOrders.stop();
+						}
 					}
 					break;
 

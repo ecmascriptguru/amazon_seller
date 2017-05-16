@@ -24,15 +24,28 @@ let Content = (function() {
             orders.push(tempOrder);
         }
 
+        let $paginations = $(".myo_list_orders_link");
+        let $next = $paginations.eq($paginations.length - 1);
+        let nextUrl = null;
+
+        if ($next.text().toLowerCase() == "next") {
+            nextUrl = $next[0].href;
+        }
+
         chrome.runtime.sendMessage({
             from: "content",
             action: "orders",
-            data: orders
+            data: orders,
+            next: nextUrl
         }, (response) => {
-            if (response.started) {
-                //  Code to continue.
-            }
+            // if (response.started) {
+            //     goToNext();
+            // }
         });
+    };
+
+    let goToNext = () => {
+        
     }
 
     let parseOrders = () => {
