@@ -21,6 +21,12 @@ let Popup = (function() {
 	};
 
 	let start = () => {
+		chrome.runtime.sendMessage({
+            from: "popup",
+            action: "start"
+        }, (response) => {
+            console.log(response);
+        });
 		showStopPanel();
 	}
 
@@ -32,7 +38,10 @@ let Popup = (function() {
 		_selectCount.val(_count);
 		_btnStart.click(start);
 		_btnStop.click(stop);
-	}
+		_selectCount.change((event) => {
+			localStorage._count = JSON.stringify(parseInt(event.target.value));
+		});
+	};
 
 	let init = () => {
 		initializeComponents();

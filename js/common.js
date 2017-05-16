@@ -1,6 +1,6 @@
 'use strict';
 
-let ManageOrders = (function() {
+let AmazonOrders = (function() {
     let _status = JSON.parse(localStorage._status || "{}"),
         _started = JSON.parse(localStorage._started || "false"),
         _orders = JSON.parse(localStorage._orders || "[]");
@@ -20,6 +20,22 @@ let ManageOrders = (function() {
                 }
             }
         })
+    };
+
+    let start = () => {
+        localStorage._started = JSON.stringify(true);
+        chrome.tabs.query({active: true}, (tabs) => {
+            chrome.tabs.sendMessage(tabs[0].id, {
+                from: "background",
+                action: "start"
+            }, (response) => {
+                console.log(response);
+            });
+        })
+    };
+
+    let stop = () => {
+        localStorage._started = JSON.stringify(false);
     }
 
     let downloadPlaintext = (data, filename) => {
@@ -31,7 +47,7 @@ let ManageOrders = (function() {
         document.body.appendChild(el)
         el.click()
         document.body.removeChild(el)
-    }
+    };
 
     let exportToCSV = (leads) => {
         let toLine = arr => arr.map(x => `"${(x + "").replace(/"/g, '""')}"`).join(",");
@@ -49,12 +65,14 @@ let ManageOrders = (function() {
         if (content.length > 1) {
             downloadPlaintext(content.join("\n"), `${prefix}_${exportedCount}.csv`);
         }
-    }
+    };
 
     let init = () => {
     };
 
     return {
-        init: init
+        init: init,
+        start: start,
+        stop: stop
     };
 })();

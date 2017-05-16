@@ -8,11 +8,19 @@ let Background = (function() {
 		chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			switch(request.from) {
 				case "popup":
-					//	Something to do.
+					if (request.action == "start") {
+						AmazonOrders.start();
+					} else if (request.action == "stop") {
+						AmazonOrders.stop();
+					}
 					break;
 
-				case "amazon":
-					//	something to do.
+				case "content":
+					if (request.action == "status") {
+						sendResponse({
+							started: JSON.parse(localStorage._started || "false")
+						});
+					}
 					break;
 
 				default:
