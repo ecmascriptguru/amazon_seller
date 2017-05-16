@@ -69,7 +69,7 @@ let AmazonOrders = (function() {
     let exportToCSV = (orders) => {
         let toLine = arr => arr.map(x => `"${(x + "").replace(/"/g, '""')}"`).join(",");
         let content = [toLine(["#", "Customer ID", "Order ID"])];
-        let prefix = "amazon_orders_";
+        let prefix = "amazon_orders";
         let exportedCount = JSON.parse(localStorage._exportedCount || "0") + 1;
         localStorage._exportedCount = JSON.stringify(exportedCount);
 
