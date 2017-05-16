@@ -5,7 +5,7 @@
 	"short_name": "Amazon seller",
 	"description": "Amazon seller",
 	"author": "Alexis Richard",
-	"version": "1.0.0",
+	"version": "1.0.3",
 	
 	"permissions": [
 		"https://sellercentral.amazon.com/gp/orders-v2/*",
@@ -32,7 +32,7 @@
 			"run_at": "document_end"
 		}
 	],
-	"browser_action": {
+	"page_action": {
 		"default_icon": {
 			"19": "img/128.png",
 			"38": "img/128.png"

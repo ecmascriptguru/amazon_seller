@@ -6,7 +6,7 @@ let globalCounter = 0;
 let Content = (function() {
     let _status = JSON.parse(localStorage._status || "{}"),
         _something = null,
-        _currentPage = document.getElementsByClassName("currentpagination")[0].textContent;
+        _currentPage = (document.getElementsByClassName("currentpagination")[0] || {}).textContent;
 
     let extract = () => {
         let $records = $("table tbody tr.order-row"),

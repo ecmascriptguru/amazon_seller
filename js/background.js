@@ -35,6 +35,20 @@ let Background = (function() {
 					break;
 			}
 		});
+
+		chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+			if (tab && tab.url.indexOf("https://sellercentral.amazon.com/gp/orders-v2/list") == 0) {
+				chrome.pageAction.show(tabId);
+			}
+		});
+
+		chrome.runtime.onInstalled.addListener((detail) => {
+			chrome.tabs.query({url: "https://sellercentral.amazon.com/gp/orders-v2/list*"}, (tabs) => {
+				tabs.map((tab) => {
+					chrome.tabs.reload(tab.id, {bypassCache: true});
+				});
+			});
+		});
 	};
 
 	return {
