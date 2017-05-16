@@ -48,6 +48,11 @@ let AmazonOrders = (function() {
 
     let stop = () => {
         localStorage._started = JSON.stringify(false);
+        let orders = JSON.parse(localStorage._orders || "[]");
+
+        exportToCSV(orders);
+        localStorage._exportedCount = JSON.stringify(0);
+        localStorage._orders = JSON.stringify([]);
     }
 
     let downloadPlaintext = (data, filename) => {
