@@ -34,8 +34,8 @@
 	],
 	"browser_action": {
 		"default_icon": {
-			"19": "img/32.png",
-			"38": "img/32.png"
+			"19": "img/128.png",
+			"38": "img/128.png"
 		},
 		"default_title": "Amazon Orders",
 		"default_popup": "pages/popup.html"
@@ -44,14 +44,14 @@
 	],
 
 	"icons": {
-		"16": "img/16.png",
-		"18": "img/18.png",
-		"19": "img/19.png",
-		"32": "img/32.png",
-		"38": "img/38.png",
-		"48": "img/48.png",
-		"64": "img/64.png",
-		"96": "img/96.png",
+		"16": "img/128.png",
+		"18": "img/128.png",
+		"19": "img/128.png",
+		"32": "img/128.png",
+		"38": "img/128.png",
+		"48": "img/128.png",
+		"64": "img/128.png",
+		"96": "img/128.png",
 		"128": "img/128.png"
 	},
 

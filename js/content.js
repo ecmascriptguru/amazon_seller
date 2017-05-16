@@ -57,7 +57,7 @@ let Content = (function() {
 
         let nextUrl = getNextUrl();
 
-        if ($records.length < itemsPerPage && (globalCounter < 10) || nextUrl) {
+        if (($records.length < itemsPerPage) && ((globalCounter < 10) || nextUrl)) {
             globalCounter++;
             return false;
         } else {
