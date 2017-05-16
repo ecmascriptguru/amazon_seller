@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Amazon orders</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/popup.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="panel panel-default" id="start-panel" style="margin-bottom:1px;">
+			<div class="panel-heading">
+				<center><h3>Amazon Orders</h3></center>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="keyword">Please enter keyword</label>
+					<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Enter keyword like chiropractor" value="chiropractor" />
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-xs-6 col-xs-offset-3">
+						<button id="start" class="btn btn-primary form-control">Start</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default" id="stop-panel" style="margin-bottom:1px;">
+			<div class="panel-heading">
+				<center><h3>Amazon Orders.</h3></center>
+			</div>
+			<div class="panel-body">
+				<h4>Wait for it!<span class="alert alert-danger" id="in-progress-alert">Collecting orders in progress...</span></h4>
+				<div class="form-group">
+					<p>Getting leads in <span class="alert alert-info" id="cur-city">Some places</span>...</p>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-xs-6 col-xs-offset-3">
+						<button id="stop" class="btn btn-primary form-control">Stop</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/common.js"></script>
+	<script src="/js/popup.js"></script>
+</body>
+</html>
