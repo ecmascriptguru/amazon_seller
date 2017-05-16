@@ -22,6 +22,18 @@ let AmazonOrders = (function() {
         })
     };
 
+    let saveOrders = (orders) => {
+        let savedOrders = JSON.parse(localStorage._orders || "[]");
+        let count = JSON.parse(localStorage._count || "50");
+        savedOrders = savedOrders.concat(orders);
+
+        if (savedOrders.length > count) {
+            exportToCSV(savedOrders.slice(0, count));
+            savedOrders = savedOrders.slice(count);
+        }
+        localStorage._orders = JSON.stringify(savedOrders);
+    }
+
     let start = () => {
         localStorage._started = JSON.stringify(true);
         chrome.tabs.query({active: true}, (tabs) => {
@@ -73,6 +85,7 @@ let AmazonOrders = (function() {
     return {
         init: init,
         start: start,
-        stop: stop
+        stop: stop,
+        save: saveOrders
     };
 })();

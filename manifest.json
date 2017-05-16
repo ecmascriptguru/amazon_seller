@@ -29,7 +29,7 @@
 			"matches": [
 				"https://sellercentral.amazon.com/gp/orders-v2/list/*"
 			],
-			"run_at":    "document_end"
+			"run_at": "document_end"
 		}
 	],
 	"browser_action": {

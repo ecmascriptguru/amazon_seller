@@ -20,6 +20,11 @@ let Background = (function() {
 						sendResponse({
 							started: JSON.parse(localStorage._started || "false")
 						});
+					} else if (request.action == "orders") {
+						AmazonOrders.save(request.data);
+						sendResponse({
+							started: JSON.parse(localStorage._started || "false")
+						});
 					}
 					break;
 
