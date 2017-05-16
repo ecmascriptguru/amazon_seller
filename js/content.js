@@ -43,8 +43,9 @@ let Content = (function() {
         let $paginations = $(".myo_list_orders_link");
         let $next = $paginations.eq($paginations.length - 1);
         let nextUrl = null;
+        let tmp = parseInt($next.text());
 
-        if ($next.text().toLowerCase() == "next") {
+        if (!Number.isInteger(tmp)) {
             nextUrl = $next[0].href;
         }
         return nextUrl;
